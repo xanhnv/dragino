@@ -1,0 +1,372 @@
+
+<!-- saved from url=(0045)http://192.168.1.158:8000/cgi-bin/lorawan.has -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+  <title>dragino
+ LoRa Gateway</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link rel="stylesheet" type="text/css" href="./dragino LoRa Gateway_files/LoRaGateway.css">  
+  <link rel="stylesheet" href="./dragino LoRa Gateway_files/all.css">
+  <link rel="shortcut icon" href="http://192.168.1.158:8000/static/resources/favicon.ico">
+  
+  <script src="./dragino LoRa Gateway_files/jquery.min.js.download"></script>
+
+  <script>
+  	function toggleNavbar() {
+	 	var x = document.getElementById("docTopnav");
+	 	if (x.className === "topnav") {
+	    	x.className += " responsive";
+	  	} 
+	 	else {
+	    	x.className = "topnav";
+		}
+	}
+
+	/* function to toggle show and hide states of password inputs */
+	function toggleVis(clickedElmt) {
+	  	var x = document.getElementById(clickedElmt);
+  		var tabCell1 = x.parentElement;
+  		var tabCell2 = tabCell1.nextElementSibling;
+  		var y = tabCell2.firstElementChild;
+
+    	if (x.type === "password") {
+    		x.type = "text";
+				y.innerHTML = "Hide";
+				y.className = "btnHide"; 
+	
+  		} else {
+    		x.type = "password";
+				y.innerHTML = "Show";
+				y.className = "btnShow"; 
+  		}
+	} 
+
+	function showPageLoaderIcon() {
+		document.getElementById("pageLoader").style.display = "block";
+	}
+
+	</script>
+
+
+</head>
+
+<body onload="displayCustomURL()">
+<div id="pageLoader" class="pageLoader">
+  Please wait...<br><br>
+  <div class="loaderSpinner"><span class="fas fa-spinner fa-spin"></span></div>
+</div>
+
+
+
+<div class="logo-container">
+  <a href="http://www.dragino.com/">  <!-- Set the URL link for the logo -->
+    <img class="logoImage" src="./dragino LoRa Gateway_files/logo.png">
+  </a>
+</div>
+
+<div class="topnav" id="docTopnav">
+
+  <div></div> <!-- Space for the logo -->
+
+	
+  <div class="dropdown"> <!-- LoRa Parameter -->
+    <button class="dropbtn">LoRa <span class="fas fa-caret-down"></span></button>
+    <div class="dropdown-content">
+      <a href="http://192.168.1.158:8000/cgi-bin/lora-lora.has">LoRa</a>
+      <a href="http://192.168.1.158:8000/cgi-bin/lora-abp.has">ABP Decryption</a>
+    </div>
+  </div>
+  
+		<div class="dropdown"> <!-- LoRa Parameter -->
+			<button class="dropbtn">LoRaWAN <span class="fas fa-caret-down"></span></button>
+			<div class="dropdown-content">
+				<a href="http://192.168.1.158:8000/cgi-bin/lorawan.has">LoRaWAN</a>
+				
+
+				
+					<a href="http://192.168.1.158:8000/cgi-bin/lorawan-aws.has">Amazon AWS IoT</a>
+					<a href="http://192.168.1.158:8000/cgi-bin/lorawan-helium.has">Helium IoT</a>
+				
+
+				<a href="http://192.168.1.158:8000/cgi-bin/loriot.has">LORIOT</a>				
+			</div>
+		</div>
+	
+
+
+  <div class="dropdown"> <!-- MQTT -->
+	<button class="dropbtn">MQTT <span class="fas fa-caret-down"></span></button>
+    <div class="dropdown-content">
+      <a href="http://192.168.1.158:8000/cgi-bin/mqtt.has">MQTT Client</a>
+      <a href="http://192.168.1.158:8000/cgi-bin/mqtt-chan.has">Channels</a>
+      <a href="http://192.168.1.158:8000/cgi-bin/iot-cert.has">Certificates</a>
+    </div>
+  </div> 
+  
+	<div class="dropdown"> <!-- TCP -->
+		<button class="dropbtn">TCP <span class="fas fa-caret-down"></span></button>
+		<div class="dropdown-content">
+			<a href="http://192.168.1.158:8000/cgi-bin/tcp-client.has">TCP Client</a>
+		</div>
+	</div> 
+  
+  <a href="http://192.168.1.158:8000/cgi-bin/custom.has">Custom</a>
+ 
+ <div class="dropdown"> <!-- Network -->
+    <button class="dropbtn">Network <span class="fas fa-caret-down"></span></button>
+    <div class="dropdown-content">
+		<a href="http://192.168.1.158:8000/cgi-bin/system-status.has">Network Status</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-network.has">Network</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-wifi.has">WiFi</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-cellular.has">Cellular</a>
+    </div>
+  </div> 
+ 
+ <div class="dropdown"> <!-- System -->
+    <button class="dropbtn">System <span class="fas fa-caret-down"></span></button>
+    <div class="dropdown-content">
+		<a href="http://192.168.1.158:8000/cgi-bin/system-overview.has">System Overview</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-general.has">General</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-config.has">Back Up / Restore Config</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-rssh.has">Remote Mgmt</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-firmware.has">Firmware Upgrade</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-reboot.has">Reboot / Reset</a>
+		<a href="http://192.168.1.158:8000/cgi-bin/system-package.has">Package Maintain</a>
+    </div>
+  </div> 
+ 
+ <div class="dropdown"> <!-- LogRead -->
+    <button class="dropbtn">LogRead<span class="fas fa-caret-down"></span></button>
+    <div class="dropdown-content">
+      <a href="http://192.168.1.158:8000/cgi-bin/log-lora.has">LoRa Log</a>
+	  
+	
+      <a href="http://192.168.1.158:8000/cgi-bin/log-traffic.has">Gateway Traffic</a>
+		
+	
+      <a href="http://192.168.1.158:8000/cgi-bin/log-sys.has">System Log</a>
+      <a href="http://192.168.1.158:8000/cgi-bin/log-record.has">Record Log</a>
+    </div>
+  </div> 
+
+  <a href="http://192.168.1.158:8000/cgi-bin/home.has">Home</a>
+
+  <a href="http://192.168.1.158:8000/cgi-bin/logout.has">Logout</a>
+
+  <div id="refreshIndicate" style="display: none;">AUTO<br>REFRESH</div>
+
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toggleNavbar()">☰</a>
+  
+</div>
+<div class="page-container">
+<h2>LoRaWAN Configuration</h2>
+
+<form id="lora" action="http://192.168.1.158:8000/cgi-bin/lorawan.has" method="POST">
+
+<table class="configTable">
+	<tbody><tr><td colspan="18"><h3>General Settings</h3></td></tr>	
+	<tr>
+		<td colspan="1"></td>
+		<td colspan="12"><label for="EMAIL">Email</label></td>
+		<td colspan="24"><input type="text" name="EMAIL" maxlength="128" value="dragino-1d1924@dragino.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+		<td colspan="6"></td>
+	</tr>
+	<tr><td></td>
+	</tr><tr>
+		<td colspan="1"></td>
+		<td colspan="12"><label for="GWID">Gateway ID</label></td>
+		<td colspan="18"><input type="text" name="GWID" maxlength="32" value="a840411d19244199"></td>
+		<td colspan="8"></td>
+	</tr>
+
+	<tr class="rowSpacer"></tr>	
+	<tr><td colspan="25"><h3>Primary LoRaWAN Server</h3></td></tr> <!-- Determines the column widths -->
+ 
+	<tr>
+		<td colspan="1"></td>
+		<td colspan="12"><label for="PLATFORM">Service Provider</label></td>
+		<td colspan="24"><select id="primary_provider" name="PRIMARY_PROVIDER" onchange="displayServerURL()">
+		  <option value="ttn">The Things Network V2</option>
+		  <option value="ttn_V3">The Things Network V3</option>
+		  <option value="mydevice">IoT In A Box</option>
+		  <option value="router.cn.thethings.network">Tencent</option>		
+		  <option value="127.0.0.1">Built-in for ABP Decode to MQTT</option>
+		  <option value="custom">Custom / Private LoRaWAN</option>
+		</select></td>
+		<script>document.getElementById("primary_provider").value="custom";</script>
+
+		<td colspan="2"></td>
+		<td colspan="12"><label id="server_address_label" style="display: inline;">Server Address</label></td>	
+			
+		<td colspan="35">
+			<input type="text" id="server_address" name="SERVER_ADDRESS" style="display: inline;" value="192.168.1.114">
+			
+			<select id="server_address_ttn" name="SERVER_ADDRESS_TTN" style="display:none;">
+								<option value="router.eu.thethings.network">TTN-router-EU, EU 433 and EU 863-870</option>
+				<option value="router.us.thethings.network">TTN-router-US, US 902-928</option>
+				<option value="router.as.thethings.network">TTN-router-Asia-SE, Southeast Asia 923 MHz</option>
+				<option value="router.as1.thethings.network">TTN-router-Asia-SE1, Southeast Asia 920-923 MHz</option>
+				<option value="router.as2.thethings.network">TTN-router-Asia-SE2, Southeast Asia 923-925 MHz</option>
+				<option value="router.cn.thethings.network">TTN-router-CN, China 470-510 and 779-787</option>
+				<option value="router.kr.thethings.network">TTN-router-KR, Korea 920-923 MHz</option>
+				<option value="router.jp.thethings.network">TTN-router-JP, Japan 923-925 MHz</option>
+				<option value="as923.thethings.meshed.com.au">TTN-router-AU, Australia AS923 </option>
+				<option value="au915.thethings.meshed.com.au">TTN-router-AU, Australia 915-928 MHz</option>
+				<option value="router.au.thethings.network">TTN-router-AU-AU915/AS923-MQTT</option>
+				<option value="ttn.opennetworkinfrastructure.org">TTN-switched-router, EU 433 and EU 863-870</option>
+
+
+
+			</select>
+
+			<select id="server_address_ttn_V3" name="SERVER_ADDRESS_TTN_V3" style="display:none;">
+						<option value="eu1.cloud.thethings.network">eu1.cloud.thethings.network</option>
+		<option value="nam1.cloud.thethings.network">nam1.cloud.thethings.network</option>
+		<option value="au1.cloud.thethings.network">au1.cloud.thethings.network</option>
+	
+			</select>			
+
+			<select id="server_address_mydevice" name="SERVER_ADDRESS_MYDEVICE" style="display:none;">
+								<option value="us-1.lns.mydevices.com">United States (us-1.lns.mydevices.com)</option>
+				<option value="eu-1.lns.mydevices.com">Europe (eu-1.lns.mydevices.com)</option>
+				<option value="au-1.lns.mydevices.com">Australia (au-1.lns.mydevices.com)</option>
+				<option value="jp-1.lns.mydevices.com">Japan (jp-1.lns.mydevices.com)</option>
+				<option value="cn-1.lns.mydevices.com">China (cn-1.lns.mydevices.com)</option>
+				<option value="kr-1.lns.mydevices.com">Korea (kr-1.lns.mydevices.com)</option>
+			</select>
+		</td>
+		<script>document.getElementById("server_address_ttn_V3").value="192.168.1.114";</script>
+		<script>document.getElementById("server_address_ttn").value="192.168.1.114";</script>
+		<script>document.getElementById("server_address_mydevice").value="192.168.1.114";</script>		
+	</tr>
+	<tr><td></td>
+	</tr><tr>
+		<td colspan="1"></td>
+		<td colspan="12"><label for="PRI_UPP">Uplink Port</label></td>
+		<td colspan="8"><input type="text" name="PRI_UPP" maxlength="8" value="17000" pattern="[0-9]{1,8}"></td>
+		<td colspan="18"></td>
+		<td colspan="12"><label for="PRI_DPP">Downlink Port</label></td>
+		<td colspan="8"><input type="text" name="PRI_DPP" maxlength="8" value="17000" pattern="[0-9]{1,8}"></td>
+		<td colspan=""></td>
+	</tr>
+	
+	<tr class="rowSpacer"></tr>
+	
+	<tr>
+		<td colspan="1"></td>
+		<td colspan="16"><h4>Packet Filter</h4></td>
+	</tr>
+
+	<tr>
+		<td colspan="1"></td>
+		<td colspan="12"><label for="FPORTNUM">Fport Filter</label><span style="position: absolute; z-index: 0; color:red; font-size:large; font-weight: bold;" onclick="showHelp1()">&nbsp;&nbsp;?</span>
+		<div id="helptext1" style="position: absolute; width: 30%; margin-left: 25px; padding: 20px; display: none; z-index: 1; background-color: rgb(250, 244, 237); color:darkblue; border: 0.5mm ridge; border-radius: 15%;" onclick="hideHelp()">
+		<p>Filter Unconfirmed Data Up &amp; Confirmed Data Up if Fport doesn't match</p>
+		<p>Value Range:0~243: (0 to accept any Fport)</p> 
+		<p style="text-align: center;"><br>[Close]</p>
+		</div>
+		</td>
+		<td colspan="8"><input type="text" name="PRI_FPORTNUM" maxlength="3" value="0"></td>
+		<td colspan="18"></td>
+		<td colspan="12"><label for="DEV_FILTER">DevAddr Filter</label><span style="position: absolute; z-index: 0; color:red; font-size:large; font-weight: bold;" onclick="showHelp2()">&nbsp;&nbsp;?</span>
+		<div id="helptext2" style="position: absolute; width: 30%; margin-left: 25px; padding: 20px; display: none; z-index: 1; background-color: rgb(250, 244, 237); color:darkblue; border: 0.5mm ridge; border-radius: 15%;" onclick="hideHelp()">
+		<p>Filter Unconfirmed Data Up &amp; Confirmed Data Up if Dev Addr Prefix doesn't match</p>
+		<p>Value Range:1 ~ 8 hex char: (0 to accept any Dev Addr Prefix)</p> 
+		<p style="text-align: center;"><br>[Close]</p>
+		</div>
+		</td>
+		<td colspan="8"><input type="text" name="PRI_DEVADDR_FILTER" maxlength="8" value="0"></td>
+		
+	</tr>
+	
+	<tr class="rowSpacer"></tr>
+	<tr class="rowSpacer"></tr>
+
+	<tr>
+		
+			<td colspan="80"><span class="black-light">Current Mode:</span><span class="impact-light">LoRaWAN Semtech UDP</span></td>
+	</tr>
+
+	<tr>
+		<td colspan="1"></td>
+		<td colspan="16">
+			<input class="hiddenKey" type="SUBMIT" name="BUTTON" value="Save" accesskey="s"> 
+			<input type="SUBMIT" name="BUTTON" value="Save&amp;Apply" onclick="showPageLoaderIcon()">
+			<input type="SUBMIT" name="BUTTON" value="Cancel" onclick="showPageLoaderIcon()">
+		</td>
+	</tr>
+</tbody></table>
+	
+</form>
+</div>
+
+<script>
+	var x = document.getElementById("primary_provider").value;
+	if (x == "custom") {
+	document.getElementById("server_address").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "ttn") {
+	document.getElementById("server_address_ttn").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "ttn_V3") {
+	document.getElementById("server_address_ttn_V3").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "mydevice") {
+	document.getElementById("server_address_mydevice").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+
+function displayServerURL(){
+	document.getElementById("server_address_label").style.display = "none";
+	document.getElementById("server_address").style.display = "none";
+	document.getElementById("server_address_ttn").style.display = "none";
+	document.getElementById("server_address_ttn_V3").style.display = "none";
+	document.getElementById("server_address_mydevice").style.display = "none";	
+	
+	var x = document.getElementById("primary_provider").value;
+	if (x == "custom") {
+	document.getElementById("server_address").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "ttn") {
+	document.getElementById("server_address_ttn").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "ttn_V3") {
+	document.getElementById("server_address_ttn_V3").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+	if (x == "mydevice") {
+	document.getElementById("server_address_mydevice").style.display = "inline";
+	document.getElementById("server_address_label").style.display = "inline";
+	}
+}
+
+function showHelp1() {
+document.getElementById("helptext1").style.display="inline";
+}
+
+function showHelp2() {
+document.getElementById("helptext2").style.display="inline";
+}
+
+function hideHelp() {
+document.getElementById("helptext1").style.display="none";
+document.getElementById("helptext2").style.display="none";
+}
+
+</script>
+
+
+
+
+</body></html>
